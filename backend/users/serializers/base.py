@@ -20,14 +20,14 @@ class UserSerializer(serializers.ModelSerializer):
 
         return obj
 
-    def validate(self, validated_data):
-        first_name = validated_data.get('first_name', None)
-        last_name = validated_data.get('last_name', None)
+    def validate(self, attrs):
+        first_name = attrs.get('first_name', None)
+        last_name = attrs.get('last_name', None)
 
-        validated_data['first_name'] = self.clean_name(first_name)
-        validated_data['last_name'] = self.clean_name(last_name)
+        attrs['first_name'] = self.clean_name(first_name)
+        attrs['last_name'] = self.clean_name(last_name)
 
-        return validated_data
+        return attrs
 
     def clean_name(self, name):
         if name is not None:
