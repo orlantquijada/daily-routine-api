@@ -26,3 +26,16 @@ class Task(models.Model):
             raise ValidationError(_('Start time must have a duration.'))
 
         super().clean(*args, **kwargs)
+
+
+class Record(models.Model):
+    of_task = models.ForeignKey(Task, on_delete=models.CASCADE)
+    date = models.DateField(default=timezone.now)
+    is_accomplished = models.BooleanField(default=False)
+
+    objects = managers.RecordManager()
+
+    def __str__(self):
+        # pylint: disable=no-member
+        is_accomplished = '/ Accomplished' if self.is_accomplished else ''
+        return f'{self.of_task} / {self.date} {is_accomplished}'

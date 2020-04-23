@@ -34,3 +34,23 @@ class TaskSerializer(serializers.ModelSerializer):
                 'Start time must have a duration.')
 
         return attrs
+
+
+class RecordSerializer(serializers.ModelSerializer):
+
+    task_id = serializers.PrimaryKeyRelatedField(
+        queryset=models.Task.objects.all(),
+        source='of_task'
+    )
+    date = serializers.DateField(
+        format=global_vars.DATE_FORMAT, input_formats=(global_vars.DATE_FORMAT))
+
+    class Meta:
+        model = models.Record
+        fields = ('id', 'task_id', 'date', 'is_accomplished')
+
+    def create(self, validated_data):
+        # pylint: disable=unused-variable
+        obj, created = models.Record.objects.get_or_create(**validated_data)
+
+        return obj

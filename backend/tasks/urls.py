@@ -7,5 +7,6 @@ from backend.tasks import views
 
 ROUTER = routers.DefaultRouter()
 ROUTER.register('tasks', views.TaskViewSet)
+ROUTER.register('records', views.RecordViewSet)
 
 urlpatterns = path('', include(ROUTER.urls))
