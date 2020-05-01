@@ -45,7 +45,7 @@ class RecordViewSet(mixins.ListModelMixin,
 
     # pylint: disable=no-member
     queryset = models.Record.objects
-    serializer_class = serializers.base.RecordSerializer
+    serializer_class = serializers.extended.ExtendedRecordSerializer
 
     def get_queryset(self):
 
