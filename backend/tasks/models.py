@@ -14,6 +14,7 @@ class Task(models.Model):
     title = models.CharField(max_length=global_vars.TASK_TITLE_MAX_LENGTH)
     start_time = models.TimeField(blank=True, null=True)
     duration = models.TimeField(blank=True, null=True)
+    icon = models.ImageField(upload_to='tasks/icons/', blank=True, null=True)
 
     objects = managers.TaskManager()
 

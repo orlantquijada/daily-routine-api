@@ -20,7 +20,7 @@ class TaskSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Task
-        fields = ('id', 'user_id', 'title', 'start_time', 'duration')
+        fields = ('id', 'user_id', 'title', 'start_time', 'duration', 'icon')
 
     def validate(self, attrs):
         start_time = attrs.get('start_time', None)
