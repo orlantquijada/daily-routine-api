@@ -24,7 +24,7 @@ class UserSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 'Password can not be updated through this request url. Use "/api/v1/users/change-password/ instead.')
 
-        return validated_data
+        return super().update(instance, validated_data)
 
     def validate(self, attrs):
         first_name = attrs.get('first_name', None)
