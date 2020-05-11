@@ -1,5 +1,7 @@
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
+from backend.users import serializers
+
 
 class ObtainTokenSerializer(TokenObtainPairSerializer):
 
@@ -9,3 +11,9 @@ class ObtainTokenSerializer(TokenObtainPairSerializer):
 
         token['full_name'] = user.full_name()
         return token
+
+    def validate(self, attrs):
+        data = super().validate(attrs)
+
+        data['user'] = serializers.base.UserSerializer(self.user).data
+        return data

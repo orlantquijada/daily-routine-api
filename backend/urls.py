@@ -1,5 +1,3 @@
-from rest_framework_simplejwt import views as jwt_views
-
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
@@ -10,11 +8,9 @@ from backend.tasks.urls import urlpatterns as TASK_URLS
 from backend.authentication.urls import urlpatterns as AUTH_URLS
 
 
-JWT_URLS = path('token/', include([
+JWT_URLS = path('token/', include(
     AUTH_URLS,
-    path('refresh/',
-         jwt_views.TokenRefreshView.as_view())
-]))
+))
 
 urlpatterns = [
     path('admin/', admin.site.urls),
