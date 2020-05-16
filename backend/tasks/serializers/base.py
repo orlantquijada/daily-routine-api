@@ -26,7 +26,9 @@ class TaskSerializer(serializers.ModelSerializer):
         start_time = attrs.get('start_time', None)
         duration = attrs.get('duration', None)
 
-        attrs['title'] = attrs['title'].capitalize()
+        title = attrs.get('title')
+        if title:
+            attrs.update({'title': title})
 
         if not start_time and not duration:
             return attrs
