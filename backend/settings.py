@@ -73,11 +73,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'daily_db',
         'USER': 'daily',
         'PASSWORD': 'Generic123!',
-        'HOST': '',
+        'HOST': 'localhost',
         'PORT': ''
     }
 }
