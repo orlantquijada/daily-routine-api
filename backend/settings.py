@@ -42,6 +42,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -86,8 +88,8 @@ DATABASES = {
     }
 }
 
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES.update(db_from_env)
+# db_from_env = dj_database_url.config(conn_max_age=600)
+# DATABASES.update(db_from_env)
 
 
 # Password validation
