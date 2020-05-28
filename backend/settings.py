@@ -18,6 +18,7 @@ DEBUG = False
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'prac-asdf.herokuapp.com'
+    'naughty-ardinghelli-ecf805.netlify.app'
 ]
 
 
