@@ -17,7 +17,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
-    'prac-asdf.heroku.com'
+    'prac-asdf.herokuapp.com'
 ]
 
 
@@ -124,6 +124,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'backend/static')]
 
 AUTH_USER_MODEL = 'users.User'
 
@@ -161,6 +164,7 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
 )
+
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
