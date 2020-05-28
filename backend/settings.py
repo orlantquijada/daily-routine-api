@@ -1,6 +1,7 @@
 import os
 from django.utils.timezone import timedelta
 import django_heroku
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -16,9 +17,7 @@ SECRET_KEY = os.environ.get('DAILY_SECRET_KEY')
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'prac-asdf.herokuapp.com'
-    'naughty-ardinghelli-ecf805.netlify.app'
+    '*'
 ]
 
 
@@ -86,6 +85,9 @@ DATABASES = {
         'PORT': ''
     }
 }
+
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES.update(db_from_env)
 
 
 # Password validation
