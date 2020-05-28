@@ -1,5 +1,6 @@
 import os
 from django.utils.timezone import timedelta
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -9,12 +10,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '!14taqiexvx)89qr+$=@$s&t=_x7f2(44-eokk&498o+)j+0ko'
+SECRET_KEY = os.environ.get('DAILY_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'prac-asdf.heroku.com'
+]
 
 
 # Application definition
@@ -157,3 +161,6 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
 )
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
